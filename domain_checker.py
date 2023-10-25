@@ -22,23 +22,28 @@ def main():
             prog = 'DomainChecker',
             usage = 'domain_checker.py DOMAIN_NAME DOMAIN_NAME',
             epilog = ('''\
-    examples:
+examples:
 
-        Domain names can be added as command line arguments:
+    Domain names can be added as command line arguments:
 
-            domain_checker.py example1.com example2.com
+        domain_checker.py example1.com example2.com
 
-        Or they can be read from an external file:
+    Or they can be read from an external file:
             
-            domain_checker.py --list domain_list.txt
+        domain_checker.py --list domain_list.txt
 
-        When using an external file, put one domain per line.
+    When using an external file, put one domain per line.
+
+    To get more information in addition to the availability and expiration,
+    use the details option (-d, --details)
+    This flag can be used with both command line arguments and an external 
+    list of domains.
                      ''')
                      )
 
     parser.add_argument('domain', nargs='*', help='Domain names to be checked')
-    parser.add_argument('-l', '--list', help='List of domains to process')
-    parser.add_argument('-d', '--details', action='store_true', help='Return full details of each domain')
+    parser.add_argument('-l', '--list', action='store_true', help='List of domains to process')
+    parser.add_argument('-d', '--details', action='store_true', help='Return more details of each domain')
 
     args = parser.parse_args()
 
