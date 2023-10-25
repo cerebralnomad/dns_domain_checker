@@ -37,12 +37,15 @@ examples:
     To get more information in addition to the availability and expiration,
     use the details option (-d, --details)
     This flag can be used with both command line arguments and an external 
-    list of domains.
+    list of domains:
+
+        domain_checker.py -d -l domain_list.txt
+        domain_checker.py --details <example.com> <example2.com>
                      ''')
                      )
 
     parser.add_argument('domain', nargs='*', help='Domain names to be checked')
-    parser.add_argument('-l', '--list', action='store_true', help='List of domains to process')
+    parser.add_argument('-l', '--list', help='List of domains to process')
     parser.add_argument('-d', '--details', action='store_true', help='Return more details of each domain')
 
     args = parser.parse_args()
