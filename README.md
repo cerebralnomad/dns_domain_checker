@@ -4,14 +4,14 @@ A simple CLI script to check whether a domain name is available and to optionall
 Written in Python 3
 
 ## Requires python-whois module
-'''
-pip install python-whois
-'''
+
+    pip install python-whois
+
 
 ## Usage
-'''
-domain_checker.py [option] [domain] [domain]
-'''
+
+    domain_checker.py [option] [domain] [domain]
+
 
 positional arguments:
 
