@@ -67,13 +67,9 @@ def domain_check(args):
             
         try:
             w = whois.whois(domain)
-            if w.status == None:
-                print(domain + " is available")
-            else:
-                if w.expiration_date:
-                    print(domain + " is not available. Expiry date: " + str(w.expiration_date))
-                else:
-                    print(domain + " is not available")
+            
+            print(domain + " is not available. Expiry date: " + str(w.expiration_date))
+                
         except whois.parser.PywhoisError:
             print(domain + " is available")
         except:
@@ -95,25 +91,25 @@ def detailed_domain_check(args):
                 name_serv = w.name_servers[0]
                 reg_name = w.name
                 reg_org = w.org
+                
+                print(domain_name + " is not available.")
+                print("")
+                print('Domain: ' + domain_name)
+                print('Registrar: ' + registrar)
+                print('Created: ' + str(created))
+                print('Updated: ' + str(updated))
+                print('Expires: ' + str(expiry))
+                print('Whois Server: ' + server)
+                print('Name Server: ' + name_serv)
+                print('Registrant: ' + str(reg_name))
+                print('Orgnization: ' + str(reg_org))
+                print("")
 
-                if w.status == None:
-                    print(domain + " is not registered")
-                else:
-                    print(domain + " is not available.")
-                    print("")
-                    print('Domain: ' + domain_name)
-                    print('Registrar: ' + registrar)
-                    print('Created: ' + str(created))
-                    print('Updated: ' + str(updated))
-                    print('Expires: ' + str(expiry))
-                    print('Whois Server: ' + server)
-                    print('Name Server: ' + name_serv)
-                    print('Registrant: ' + str(reg_name))
-                    print('Orgnization: ' + str(reg_org))
-                    print("")
-
+            except whois.parser.PywhoisError:
+                    print(domain + ' is available')
             except:
-                    print('Error: Something went wrong, debug it')
+                    print("Error: Invalid domain name or unable to connect to WHOIS server.")
+
                                 
 def check_from_file(domainfile):
 
@@ -122,15 +118,9 @@ def check_from_file(domainfile):
                         domain = line.strip()
                         try:
                                 w = whois.whois(domain)
-                                if w.status == None:
-                                    print(domain + " is available")
-                                else:
-                                    if w.expiration_date:
-                                        print(domain + " is not available. Expiry date: " + str(w.expiration_date))
-                                    else:
-                                        print(domain + " is not available")
+                                print(domain + " is not available. Expiry date: " + str(w.expiration_date))
+                            
                         except whois.parser.PywhoisError:
-                                print('PywhoisError')
                                 print(domain + " is available")
                         except:
                                 print("Error: Invalid domain name or unable to connect to WHOIS server.")
@@ -147,21 +137,28 @@ def check_details_from_file(domainfile):
                                 created = w.creation_date
                                 updated = w.updated_date
                                 expiry = w.expiration_date
-                                if w.status == None:
-                                    print(domain + " is available")
-                                else:
-                                     print(domain + " is not available.")
-                                     print("")
-                                     print('Domain: ' + domain_name)
-                                     print('Registrar: ' + registrar)
-                                     print('Created: ' + str(created))
-                                     print('Updated: ' + str(updated))
-                                     print('Expires: ' + str(expiry))
-                                     print("")
+                                server = w.whois_server
+                                name_serv = w.name_servers[0]
+                                reg_name = w.name
+                                reg_org = w.org
+                                
+                                print(domain + " is not available.")
+                                print("")
+                                print('Domain: ' + domain_name)
+                                print('Registrar: ' + registrar)
+                                print('Created: ' + str(created))
+                                print('Updated: ' + str(updated))
+                                print('Expires: ' + str(expiry))
+                                print('Whois Server: ' + server)
+                                print('Name Server: ' + name_serv)
+                                print('Registrant: ' + str(reg_name))
+                                print('Orgnization: ' + str(reg_org))
+                                print("")
 
+                        except whois.parser.PywhoisError:
+                                print(domain + ' is available.')
                         except:
                                 print("Error: Invalid domain name or unable to connect to WHOIS server.")
-
 
 main()
 
