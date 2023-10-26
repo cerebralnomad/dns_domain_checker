@@ -13,6 +13,7 @@ When using an external file, put one domain per line.
 
 import argparse
 import whois
+import datetime
 
 def main():
     
@@ -92,6 +93,7 @@ def detailed_domain_check(args):
                 name_serv = w.name_servers[0]
                 reg_name = w.name
                 reg_org = w.org
+                days_left = (expiry-datetime.datetime.now()).days
                 
                 print(domain_name + " is not available.")
                 print("")
@@ -100,6 +102,7 @@ def detailed_domain_check(args):
                 print('Created: ' + str(created))
                 print('Updated: ' + str(updated))
                 print('Expires: ' + str(expiry))
+                print('Time Remaining: ' + str(days_left) + ' days')
                 print('Whois Server: ' + server)
                 print('Name Server: ' + name_serv)
                 print('Registrant: ' + str(reg_name))
@@ -142,6 +145,7 @@ def check_details_from_file(domainfile):
                                 name_serv = w.name_servers[0]
                                 reg_name = w.name
                                 reg_org = w.org
+                                days_left = (expiry-datetime.datetime.now()).days
                                 
                                 print(domain + " is not available.")
                                 print("")
@@ -150,6 +154,7 @@ def check_details_from_file(domainfile):
                                 print('Created: ' + str(created))
                                 print('Updated: ' + str(updated))
                                 print('Expires: ' + str(expiry))
+                                print('Time Remaining: ' + str(days_left) + ' days') 
                                 print('Whois Server: ' + server)
                                 print('Name Server: ' + name_serv)
                                 print('Registrant: ' + str(reg_name))
