@@ -47,6 +47,7 @@ examples:
     parser.add_argument('domain', nargs='*', help='Domain names to be checked')
     parser.add_argument('-l', '--list', help='List of domains to process')
     parser.add_argument('-d', '--details', action='store_true', help='Return more details of each domain')
+    parser.add_argument('-v', '--version', action='version', version='%(prog)s 0.9')
 
     args = parser.parse_args()
 
