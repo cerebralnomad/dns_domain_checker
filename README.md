@@ -30,6 +30,22 @@ examples:
     domain_checker.py -l domain_names.txt - process list of names from external file
     domain_checker.py -d -l domain_names.txt - use external file and return mroe details
 
+    $ domain_checker.py pepsi.com
+    pepsi.com is not available. Expiry date: 2024-01-13 05:00:00
+
+    $ domain_checker.py -d pepsi.com
+    pepsi.com is not available.
+
+    Domain: pepsi.com
+    Registrar: CSC CORPORATE DOMAINS, INC.
+    Created: [datetime.datetime(1993, 1, 14, 5, 0), datetime.datetime(1993, 1, 14, 0, 0)]
+    Updated: [datetime.datetime(2022, 1, 9, 6, 11, 55), datetime.datetime(2022, 1, 9, 1, 11, 55)]
+    Expires: 2024-01-13 05:00:00
+    Whois Server: whois.corporatedomains.com
+    Name Server: NS1.PBSG.COM
+    Registrant: NO DATA
+    Orgnization: PepsiCo, Inc   
+
 ## Notes
 
 If using an external list of domain names, ensure there is only one name per line.
